@@ -15,7 +15,7 @@ df = pd.read_csv(input_file)
 sales_by_month_list = df['sales'].to_list()
 sales_by_month = df.groupby('month')['sales'].apply(list).reset_index()
 
-# Convert the result to a dictionary if needed
+# Convert the result to a dictionary if neededfggjgkbmnbnh
 sales_by_month_dict = sales_by_month.to_dict()
 
 # 3. Output the total sales across all months
