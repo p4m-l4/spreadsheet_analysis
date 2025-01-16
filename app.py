@@ -69,5 +69,20 @@ print('Answer 3')
 print(total_sales)
 print(f"Findings exported to {output_file}")
 
+highest_sales_month = sales_by_month.loc[sales_by_month['sales'].idxmax()]
+lowest_sales_month = sales_by_month.loc[sales_by_month['sales'].idxmin()]
+print(f"Month with highest sales: {highest_sales_month['month']} ({highest_sales_month['sales']})")
+print(f"Month with lowest sales: {lowest_sales_month['month']} ({lowest_sales_month['sales']})")
+
+# Calculate net profit for each month
+df['net_profit'] = df['sales'] - df['expenditure']
+
+# Print net profit for each month
+print("Net Profit by Month:")
+print(df[['month', 'net_profit']])
+
+
 # Display the chart
 plt.show()
+
+
