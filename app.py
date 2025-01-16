@@ -7,7 +7,11 @@
 #needed to install pandas and matplotlib + openpyxl
 #replit only allowed two members (one contributor)
 #github issue - cloning project to pycharm and pushing project to github so we could all contribute
-#hihi
+#different operating systems (pycharm) on mac and windows
+#difficulty pulling without pushing our own changes first
+# three different versions of python 3.11, 3.12, 3.13
+# three different time zones
+#any issues with code?? - ask to pamela
 
 import pandas as pd
 import matplotlib.pyplot as plt
