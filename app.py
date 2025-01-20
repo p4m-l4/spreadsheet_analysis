@@ -29,11 +29,11 @@ total_sales = df['sales'].sum()
 # Calculate average sales
 average_sales =df['sales']. mean()
 # Monthly Sales as Percentage of Total Sales.
-df['Sales Percentage (%)'] = (df['sales'] / total_sales) * 100
+df['Sales Percentage (%)'] = ((df['sales'] / total_sales) * 100).round(2)
 print("\nMonthly Sales Percentage:")
 print(df[['month', 'Sales Percentage (%)']])
 # Percentage of changes per month
-df['Monthly Change (%)'] =df['sales']. pct_change() * 100
+df['Monthly Change (%)'] =(df['sales']. pct_change() * 100).round(2)
 print("\nMonthly Sales Changes Percentage:")
 print(df[['month', 'Monthly Change (%)']])
 # Identify the months with the highest and lowest sales
@@ -67,15 +67,12 @@ plt.savefig(chart_file)
 print('Read the sales data file')
 print('Read the sales data file:{}'.format(df.info()))
 
-# print('Answer 2(a)')
-# print(sales_by_month)
-# print('Answer 2(c)')
+# Answer 2(c)
 print('Sales for each month in a list: {}'.format(sales_by_month_list))
-# print('Answer 3')
+# Answer 3
 print('Total sales in a month:{}'.format(total_sales))
-# Print the summary
 
-# print("Sales Analysis Summary:\n")
+# Sales Analysis Summary
 print(f"Average Sales: {average_sales:.2f}")
 print(f"Month with Highest Sales: {highest_sales['month']} ({highest_sales['sales']})")
 print(f"Month with Lowest Sales: {lowest_sales['month']} ({lowest_sales['sales']})")
