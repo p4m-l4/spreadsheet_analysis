@@ -70,7 +70,7 @@ print('Read the sales data file:{}'.format(df.info()))
 print('Sales for each month in a list: {}'.format(sales_by_month_list))
 # print('Answer 3')
 print('Total sales in a month:{}'.format(total_sales))
-# Print the summary
+
 
 # print("Sales Analysis Summary:\n")
 print(f"Average Sales: {average_sales:.2f}")
