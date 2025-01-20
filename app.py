@@ -36,6 +36,9 @@ print(df[['month', 'Sales Percentage (%)']])
 df['Monthly Change (%)'] =df['sales']. pct_change() * 100
 print("\nMonthly Sales Changes Percentage:")
 print(df[['month', 'Monthly Change (%)']])
+# Identify the months with the highest and lowest sales
+highest_sales = df.loc[df['sales'].idxmax()]
+lowest_sales = df.loc[df['sales'].idxmin()]
 
 
 # Prepare findings for export
@@ -70,10 +73,12 @@ print('Read the sales data file:{}'.format(df.info()))
 print('Sales for each month in a list: {}'.format(sales_by_month_list))
 # print('Answer 3')
 print('Total sales in a month:{}'.format(total_sales))
-
+# Print the summary
 
 # print("Sales Analysis Summary:\n")
 print(f"Average Sales: {average_sales:.2f}")
+print(f"Month with Highest Sales: {highest_sales['month']} ({highest_sales['sales']})")
+print(f"Month with Lowest Sales: {lowest_sales['month']} ({lowest_sales['sales']})")
 print(f"Findings exported to {output_file}")
 
 # Display the chart
