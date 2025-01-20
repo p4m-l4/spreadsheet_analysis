@@ -20,11 +20,25 @@ df = pd.read_csv(input_file)
 sales_by_month_list = df['sales'].to_list()
 sales_by_month = df.groupby('month')['sales'].apply(list).reset_index()
 
-# Convert the result to a dictionary if needed fggjgkbmnbnhbgkjghnv jn nvbnvbnv vv vb v
+# Convert the result to a dictionary if needed
 sales_by_month_dict = sales_by_month.to_dict()
 
 # 3. Output the total sales across all months
 total_sales = df['sales'].sum()
+
+# Calculate average sales
+average_sales =df['sales']. mean()
+# Monthly Sales as Percentage of Total Sales.
+df['Sales Percentage (%)'] = (df['sales'] / total_sales) * 100
+print("\nMonthly Sales Percentage:")
+print(df[['month', 'Sales Percentage (%)']])
+# Percentage of changes per month
+df['Monthly Change (%)'] =df['sales']. pct_change() * 100
+print("\nMonthly Sales Changes Percentage:")
+print(df[['month', 'Monthly Change (%)']])
+# Finding which months had the highest (and lowest) sales
+highest_sales = df. loc[df['sales']. idxmax()]
+lowest_sales = df. loc[df['sales']. idxmin()]
 
 # Prepare findings for export
 findings = pd.DataFrame({
@@ -50,17 +64,25 @@ chart_file = "sales_by_month_chart.png"
 plt.savefig(chart_file)
 
 print('Read the sales data file')
-print(df.info())
+print('Read the sales data file:{}'.format(df.info()))
 
 # print('Answer 2(a)')
 # print(sales_by_month)
-# print('Answer 2(b)')
-# print(sales_by_month_dict)
-print('Answer 2(c)')
-print(sales_by_month_list)
-print('Answer 3')
-print(total_sales)
+# print('Answer 2(c)')
+print('Sales for each month in a list: {}'.format(sales_by_month_list))
+# print('Answer 3')
+print('Total sales in a month:{}'.format(total_sales))
+# Print the summary
+
+# print("Sales Analysis Summary:\n")
+print(f"Average Sales: {average_sales:.2f}")
+print(f"Month with Highest Sales: {highest_sales['month']} ({highest_sales['sales']})")
+print(f"Month with Lowest Sales: {lowest_sales['month']} ({lowest_sales['sales']})")
 print(f"Findings exported to {output_file}")
 
 # Display the chart
 plt.show()
+
+
+
+
