@@ -7,13 +7,6 @@
 #needed to install pandas and matplotlib + openpyxl
 #replit only allowed two members (one contributor)
 #github issue - cloning project to pycharm and pushing project to github so we could all contribute
-#different operating systems (pycharm) on mac and windows
-#difficulty pulling without pushing our own changes first
-# three different versions of python 3.11, 3.12, 3.13
-# three different time zones
-#any issues with code?? - ask to pamela
-# test push
-
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -27,11 +20,23 @@ df = pd.read_csv(input_file)
 sales_by_month_list = df['sales'].to_list()
 sales_by_month = df.groupby('month')['sales'].apply(list).reset_index()
 
-# Convert the result to a dictionary if needed fggjgkbmnbnhbgkjghnv jn nvbnvbnv vv vb v
+# Convert the result to a dictionary if needed
 sales_by_month_dict = sales_by_month.to_dict()
 
 # 3. Output the total sales across all months
 total_sales = df['sales'].sum()
+
+# Calculate average sales
+average_sales =df['sales']. mean()
+# Monthly Sales as Percentage of Total Sales.
+df['Sales Percentage (%)'] = (df['sales'] / total_sales) * 100
+print("\nMonthly Sales Percentage:")
+print(df[['month', 'Sales Percentage (%)']])
+# Percentage of changes per month
+df['Monthly Change (%)'] =df['sales']. pct_change() * 100
+print("\nMonthly Sales Changes Percentage:")
+print(df[['month', 'Monthly Change (%)']])
+
 
 # Prepare findings for export
 findings = pd.DataFrame({
@@ -57,32 +62,23 @@ chart_file = "sales_by_month_chart.png"
 plt.savefig(chart_file)
 
 print('Read the sales data file')
-print(df.info())
+print('Read the sales data file:{}'.format(df.info()))
 
 # print('Answer 2(a)')
 # print(sales_by_month)
-# print('Answer 2(b)')
-# print(sales_by_month_dict)
-print('Answer 2(c)')
-print(sales_by_month_list)
-print('Answer 3')
-print(total_sales)
+# print('Answer 2(c)')
+print('Sales for each month in a list: {}'.format(sales_by_month_list))
+# print('Answer 3')
+print('Total sales in a month:{}'.format(total_sales))
+# Print the summary
+
+# print("Sales Analysis Summary:\n")
+print(f"Average Sales: {average_sales:.2f}")
 print(f"Findings exported to {output_file}")
-
-highest_sales_month = sales_by_month.loc[sales_by_month['sales'].idxmax()]
-lowest_sales_month = sales_by_month.loc[sales_by_month['sales'].idxmin()]
-print(f"Month with highest sales: {highest_sales_month['month']} ({highest_sales_month['sales']})")
-print(f"Month with lowest sales: {lowest_sales_month['month']} ({lowest_sales_month['sales']})")
-
-# Calculate net profit for each month
-df['net_profit'] = df['sales'] - df['expenditure']
-
-# Print net profit for each month
-print("Net Profit by Month:")
-print(df[['month', 'net_profit']])
-
 
 # Display the chart
 plt.show()
+
+
 
 
